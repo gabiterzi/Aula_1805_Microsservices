@@ -7,7 +7,7 @@ const port = parseInt(process.env.port, 10) || 3000
 const server = http.createServer(app)
 // inicializando a api
 server.listen(port)
-server.on('listening', )
+server.on('listening', onListening)
 console.log(`Api inicializada na porta ${port}`)
 function onListening(){
     const addr = server.address();

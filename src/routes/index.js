@@ -9,5 +9,16 @@ router.get('/', (req, res, next) => {
         }
     )
 })
+// 401 Unauthorized
+// precisa de um token para acessar essa rota - criando autenticação
+router.get('/privada', (req, res) => {
+    const token = req.headers['authorization'];
+
+    if(!token || token !== 'minhaSenha'){
+        return res.status(401).send('Sem autorização!')
+    }
+
+    res.send('Area acessada com sucesso!').status(200)
+})
 
 module.exports = router;
